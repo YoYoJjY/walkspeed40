@@ -1,0 +1,22 @@
+-- Create the ScreenGui
+local screenGui = Instance.new("ScreenGui")
+screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+-- Create the Button
+local button = Instance.new("TextButton")
+button.Size = UDim2.new(0, 200, 0, 50) -- Size of the button
+button.Position = UDim2.new(0.8, -1200, 0, 10) -- Position of the button
+button.Text = "WalkFast" -- Button text
+button.BackgroundColor3 = Color3.fromRGB(255, 0, 0) -- Background color
+button.Parent = screenGui -- Add button to the ScreenGui
+
+-- Walkspeed functionality
+button.MouseButton1Click:Connect(function()
+    local player = game.Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+    local humanoid = character:FindFirstChildOfClass("Humanoid")
+
+    if humanoid then
+        humanoid.WalkSpeed = 40 -- Set walkspeed to 40
+    end
+end)
